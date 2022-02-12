@@ -42,10 +42,7 @@ environment {
 			}
 			
 		}
-	    stage('helm-lint') {
-            steps {
-                   sh "helm lint ${PATH}/oc-deployment"
-        }
+	  
     }
 
 }
