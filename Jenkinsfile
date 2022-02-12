@@ -1,4 +1,4 @@
-def PATH = '/var/lib/jenkins/jobs/CI/workspace'
+def PATH = '/var/lib/jenkins/jobs/maven sample-multibranch/branches/feature-mult.1qvcib.ppipeline-ci/workspace'
 pipeline {
     agent any
     tools { 
@@ -42,7 +42,12 @@ environment {
 			}
 			
 		}
-	  
+	    		stage('helm-lint') {
+            steps {
+                   sh "helm lint ${PATH}/oc-deployment"
+	  		}
+			
+		}
     }
 
 }
