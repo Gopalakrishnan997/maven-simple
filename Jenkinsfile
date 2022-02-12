@@ -42,11 +42,29 @@ environment {
 			}
 			
 		}
-	    		stage('helm-lint') {
+	    stage('helm-lint') {
             steps {
                    sh "helm lint ${WORKSPACE}/oc-deployment"
 	  		}
 			
+		}
+	    	stage("Deploy to DEV from branch") {
+			when {
+				allOf {
+					not {
+						branch 'develop'
+					}
+					expression {
+						return params.DeployFromBranch
+					}
+				}
+			}
+			steps {
+				script {
+					echo "Build and push docker with new version"
+
+				}
+			}
 		}
     }
 
