@@ -15,6 +15,19 @@ environment {
 	
     }
     stages {
+	    stage('Checkout') {
+    steps {
+     // Get Combination from GitHub
+     checkout([  
+            $class: 'GitSCM', 
+            branches: [[name: 'refs/heads/master']], 
+            doGenerateSubmoduleConfigurations: false, 
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Combination']], 
+            submoduleCfg: [], 
+            userRemoteConfigs: [[credentialsId: '13d412be-0d91-447a-b125-db7f5800cdb2', url: 'https://github.com/Gopalakrishnan997/ci-cd.git']]
+        ])
+    }
+}
 		stage("Adjust version") {
 			when {
 				not {
