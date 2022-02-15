@@ -1,5 +1,5 @@
 def pomVersion = getVersion()
-def chart = readYaml (file: 'helm-chart/oc-deployment/Chart.yaml')
+chart = readYaml (file: 'helm-chart/oc-deployment/Chart.yaml')
 def chartVersion = chart.version.toString()
 pipeline {
     agent any
