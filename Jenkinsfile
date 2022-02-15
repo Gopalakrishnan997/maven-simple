@@ -1,6 +1,4 @@
-def pomVersion = getVersion()
-chart = readYaml (file: 'helm-chart/oc-deployment/Chart.yaml')
-def chartVersion = chart.version.toString()
+
 pipeline {
     agent any
     parameters {
@@ -65,6 +63,9 @@ environment {
             when { changeset "helm-chart/*"}
             steps {
                script {
+		       def pomVersion = getVersion()
+                 def chart = readYaml (file: 'helm-chart/oc-deployment/Chart.yaml')
+def chartVersion = chart.version.toString()
 			 echo "Helmchart version  - ${chartVersion}"
 			 echo "App version - " + getVersion()
                        sh "helm package ${WORKSPACE}/helm --version ${chartVersion} --app-version ${chartVersion}"
