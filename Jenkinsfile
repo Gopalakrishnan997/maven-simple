@@ -60,7 +60,7 @@ environment {
 	  		}	
 		}
 	    stage("Release helmchart") {
-            when { changeset "helm-chart/*"}
+      
             steps {
                script {
 		       def pomVersion = getVersion()
