@@ -11,7 +11,7 @@ pipeline {
 
     }
 environment {
-		SERVICE_NAME = 'fromi-otp-service'
+		SERVICE_NAME = 'deployment-service'
 	
     }
     stages {
